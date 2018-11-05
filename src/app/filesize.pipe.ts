@@ -1,0 +1,18 @@
+import { Pipe, PipeTransform } from '@angular/core';
+
+@Pipe({
+  name: 'filesize'
+})
+export class FilesizePipe implements PipeTransform {
+  static forRoot() {
+    return {
+      ngModule: FilesizePipe,
+      providers: [],
+    };
+  }
+  transform(size: number, extension: string = 'MB') {
+    console.log(size);
+    return (size / (1024 * 1024)).toFixed(2) + extension;
+  }
+
+}
